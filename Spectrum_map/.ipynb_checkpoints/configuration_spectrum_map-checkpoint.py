@@ -10,8 +10,8 @@ LO = 4e9
 #octave lo 250 MHZ
 
 #Flux line 
-LO_fluxline=8.4e9    #octave lo 250 MHZ
-IF_fluxline=0.2667e9    # 0.24299e9
+LO_fluxline=8.5e9    #octave lo 250 MHZ
+IF_fluxline=0.197432e9    # 0.24299e9
 
 twoPhoton_len=600_000_000   #1_000_000_000  #600_000_000   #600_000_000 #15
 twoPhoton_amp=0.125
