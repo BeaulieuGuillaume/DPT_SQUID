@@ -8,7 +8,7 @@ pulse_amp=0.125
 #octave lo 250 MHZ
 
 #Flux line 
-LO_fluxline=8.4e9    #octave lo 250 MHZ
+LO_fluxline=8.5e9    #octave lo 250 MHZ #octave lo 250 MHZ
 IF_fluxline=0.236e9      # 0.24299e9
 
 twoPhoton_len= 1000 #2_000_000
@@ -77,7 +77,7 @@ config = {
                 "out1": ("con1", 1), # Output of the resonator going into the OPX 
                 "out2": ("con1", 2),
             },
-            "time_of_flight": 200,
+            "time_of_flight": 24,
             "smearing": 0,
         },
         
