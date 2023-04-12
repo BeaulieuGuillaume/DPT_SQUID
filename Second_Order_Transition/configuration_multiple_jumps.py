@@ -16,7 +16,7 @@ twoPhoton_amp=0.125
 
 #Readout 
 IF_readout = 0.318e9
-LO_readout = 4e9
+LO_readout = 4.2e9
 
 
 config = {
