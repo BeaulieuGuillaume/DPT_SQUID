@@ -11,7 +11,7 @@ LO = 4e9
 
 #Flux line 
 LO_fluxline=8.5e9    #octave lo 250 MHZ
-IF_fluxline=0.197432e9    # 0.24299e9
+IF_fluxline=0.1959e9  # 0.24299e9
 
 twoPhoton_len=600_000_000   #1_000_000_000  #600_000_000   #600_000_000 #15
 twoPhoton_amp=0.125
@@ -65,7 +65,7 @@ config = {
                 "digitalInputs": {
                 "switch": {
                     "port": ("con1", 3),
-                    "delay": 5_000_000, #500000,   #500000, #delay time before sending the trigger once the pulse has been sent. 
+                    "delay": 600_000_000,  #delay time before sending the trigger once the pulse has been sent. 
                     "buffer": 0,
                 },
             },
