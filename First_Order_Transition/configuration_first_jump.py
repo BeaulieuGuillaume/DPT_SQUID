@@ -5,13 +5,12 @@
 pulse_len= 2000 #2_000_000
 pulse_amp=0.125
 
-#octave lo 250 MHZ
 
 #Flux line 
-LO_fluxline=8.5e9    #octave lo 250 MHZ #octave lo 250 MHZ
-IF_fluxline=0.1959e9       # 0.24299e9
+LO_fluxline=8.5e9    
+IF_fluxline=0.1959e9       
 
-twoPhoton_len= 1000 #2_000_000
+twoPhoton_len= 1000 #
 twoPhoton_amp=0.125
 
 #Readout 
