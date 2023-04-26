@@ -101,6 +101,28 @@ config = {
             },
         },
         
+                
+        "fluxline_unstick": {
+            "mixInputs": {
+                    "I": ("con1", 3), # Input of the fluxluine going out of the OPX 
+                    "Q": ("con1", 4),
+                    "lo_frequency": LO_fluxline,
+                    "mixer": "octave_octave1_2", # Mixer connected to the fluxline (second mixer of the octave) 
+                },
+            "intermediate_frequency": IF_fluxline,
+            "operations": {
+                "pumping":"twoPhoton", #Only operation is twoPhoton (a pump on the fluxline)
+            },
+               "digitalInputs": {
+                "switch": {
+                    "port": ("con1", 3),
+                    "delay": 0,
+                    "buffer": 0,
+                },
+            },
+        },
+        
+        
         
         
         
