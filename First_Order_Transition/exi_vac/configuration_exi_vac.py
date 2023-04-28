@@ -88,7 +88,7 @@ config = {
                     "mixer": "octave_octave1_2", # Mixer connected to the fluxline (second mixer of the octave) 
                 },
             "intermediate_frequency": IF_fluxline,
-            "hold_offset":{"duration":5_000},
+            'hold_offset':{'duration': 5_000},
             "operations": {
                 "pumping":"twoPhoton", #Only operation is twoPhoton (a pump on the fluxline)
             },
@@ -100,7 +100,7 @@ config = {
                 },
             },
         },
-         
+        
         
         
     },

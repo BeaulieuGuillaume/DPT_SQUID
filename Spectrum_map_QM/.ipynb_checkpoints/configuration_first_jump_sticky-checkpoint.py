@@ -8,7 +8,7 @@ pulse_amp=0.125
 
 #Flux line 
 LO_fluxline=8.5e9    
-IF_fluxline=0.1959e9       
+IF_fluxline=0.1958e9      
 
 twoPhoton_len= 1000 #
 twoPhoton_amp=0.125
