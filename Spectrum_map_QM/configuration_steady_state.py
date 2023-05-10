@@ -7,15 +7,15 @@ pulse_amp=0.125
 
 
 #Flux line 
-LO_fluxline=8.5e9    
-IF_fluxline=0.1958e9     
+LO_fluxline=8.6e9    
+IF_fluxline=99.5e6     
 
 twoPhoton_len= 1000 #
 twoPhoton_amp=0.125
 
 #Readout 
 IF_readout = 0.318e9
-LO_readout = 4.2e9
+LO_readout = 4.3e9
 
 
 config = {
