@@ -8,15 +8,16 @@ pulse_amp=0.125
 #octave lo 250 MHZ
 
 #Flux line 
-LO_fluxline=8.5e9    #octave lo 250 MHZ
-IF_fluxline=0.197432e9    # 0.24299e9
+#Flux line 
+LO_fluxline=8.6e9    
+IF_fluxline=99.5e6     
 
 twoPhoton_len= 50_000 #2_000_000
 twoPhoton_amp=0.125
 
 #Readout 
 IF_readout = 0.318e9
-LO_readout = 4.2e9
+LO_readout = 4.3e9
 
 
 config = {
