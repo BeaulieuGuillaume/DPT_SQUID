@@ -6,11 +6,10 @@ pulse_len= 1000 #2_000_000
 pulse_amp=0.125/2
 
 #Readout 
-IF_readout = 100e6
-LO_readout = 4.2e9
+IF_readout = 99.5e6 
+LO_readout = 8.2e9  
 
-
-
+ 
 
 config = {
     "version": 1,
@@ -52,7 +51,7 @@ config = {
                     "I": ("con1", 1), # Input of the resonator going out of the OPX 
                     "Q": ("con1", 2),
                     "lo_frequency": LO_readout,
-                    "mixer": "octave_octave1_1", # Mixer connected to the resonator (first mixer of the octave) 
+                    "mixer": "octave_octave1_2", # Mixer connected to the resonator (first mixer of the octave) 
                 },
             "intermediate_frequency": IF_readout,
             "operations": {
@@ -127,7 +126,16 @@ config = {
         },
         },
     "mixers": {
-            "octave_octave1_1": [
+        
+         "octave_octave1_1": [
+                {
+                    "intermediate_frequency": IF_readout,
+                    "lo_frequency": LO_readout,
+                    "correction": (1, 0, 0, 1),
+                },
+            ],
+        
+            "octave_octave1_2": [
                 {
                     "intermediate_frequency": IF_readout,
                     "lo_frequency": LO_readout,
