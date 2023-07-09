@@ -1,16 +1,20 @@
 
+#Flux line 
+LO_fluxline=8.6e9    
+IF_fluxline=99.5e6     
 
+twoPhoton_len= 10_000 # Length of the two photon pump
+twoPhoton_amp=0.185
 
-
-pulse_len= 1000 #2_000_000
-pulse_amp=0.125/2
-
-#Readout 
-IF_readout = 100e6
+#Readout & resonator
 LO_readout = 4.2e9
+IF_readout = 100e6
 
+pulse_len= 10_000 # length of the demodulation and of the cw resonator pulse 
+pulse_amp=0.125
 
-
+offset_adc_1=0.0178279
+offset_adc_2=0.01554166
 
 config = {
     "version": 1,
@@ -36,8 +40,8 @@ config = {
                 5: {},
             },
             "analog_inputs": {
-                1: {"offset": +0.0},
-                2: {"offset": +0.0},
+                1: {"offset": +0.0178279, 'gain_db':0},
+                2: {"offset": +0.01554166, 'gain_db':0},
             },
         }
     },
@@ -56,11 +60,12 @@ config = {
                 },
             "intermediate_frequency": IF_readout,
             "operations": {
-                "cw": "const",
+                "cw": "const", #constant pulse for the resoantor demodulaiton 
+                "fake_readout": "zero_pulse" #"zero_pulse"
             },
             "digitalInputs": {
                 "switch": {
-                    "port": ("con1", 1),
+                    "port": ("con1", 1), #digital of port 1 should go on the trigger of the octave
                     "delay": 126,
                     "buffer": 0,
                 },
@@ -73,6 +78,25 @@ config = {
             "smearing": 0,
         },
         
+        "fluxline": {
+            "mixInputs": {
+                    "I": ("con1", 3), # Input of the fluxluine going out of the OPX 
+                    "Q": ("con1", 4),
+                    "lo_frequency": LO_fluxline,
+                    "mixer": "octave_octave1_2", # Mixer connected to the fluxline (second mixer of the octave) 
+                },
+            "intermediate_frequency": IF_fluxline,
+            "operations": {
+                "pumping":"twoPhoton", #Only operation is twoPhoton (a pump on the fluxline)
+            },
+               "digitalInputs": {
+                "switch": {
+                    "port": ("con1", 3),
+                    "delay": 0,
+                    "buffer": 0,
+                },
+            },
+        },
         
         
         
@@ -94,18 +118,58 @@ config = {
                 "digital_marker": "ON",
             },
         
+          "zero_pulse": {
+                "operation": "measurement",
+                "length": pulse_len,
+                "waveforms": {
+                    "I": "zero_wf",
+                    "Q": "zero_wf",
+                },
+                "integration_weights": {
+                "cos": "cosine_weights",
+                "sin": "sine_weights",
+                "minus_sin": "minus_sine_weights",
+            },
+                "digital_marker": "ON",
+            },
+        
+        
+          "twoPhoton": {
+                "operation": "measurement",
+                "length": twoPhoton_len,
+                "waveforms": {
+                    "I":  "twoPhoton_wf",
+                    "Q": "zero_wf",
+                },
+                "integration_weights": {
+                "cos": "cosine_weights",
+                "sin": "sine_weights",
+                "minus_sin": "minus_sine_weights",
+            },
+                "digital_marker": "ON",
+            },
+        
+        
+        
         },
     
     
     "waveforms": {
+        "zero_wf": {
+            "type": "constant",
+            "sample": 0.0,
+        },
         "const_wf": {
             "type": "constant",
             "sample": pulse_amp,
-            
         },
-         "zero_wf": {
+         "twoPhoton_wf": {
             "type": "constant",
-            "sample": 0.0,
+            "sample": twoPhoton_amp,
+        },
+        "readout_wf": {
+            "type": "constant",
+            "sample": pulse_amp,
         },
     },
     "digital_waveforms": {
@@ -133,6 +197,13 @@ config = {
                     "lo_frequency": LO_readout,
                     "correction": (1, 0, 0, 1),
                 },
-            ],  
+            ],
+         "octave_octave1_2": [
+                {
+                    "intermediate_frequency": IF_fluxline,
+                    "lo_frequency": LO_fluxline,
+                    "correction": (1, 0, 0, 1),
+                },
+            ],       
         },
 }
