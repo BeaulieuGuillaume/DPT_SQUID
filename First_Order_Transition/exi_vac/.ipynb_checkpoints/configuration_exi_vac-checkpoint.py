@@ -1,21 +1,23 @@
 
 
 
-
-pulse_len= 2000 #2_000_000
-pulse_amp=0.125
-
-
 #Flux line 
 LO_fluxline=8.6e9    
 IF_fluxline=99.5e6     
 
-twoPhoton_len= 1000 #
-twoPhoton_amp=0.125
+twoPhoton_len= 10_000 # Length of the two photon pump
+twoPhoton_amp=0.185
 
-#Readout 
-IF_readout = 0.318e9
-LO_readout = 4.3e9
+#Readout & resonator
+LO_readout = 4.2e9
+IF_readout = 100e6
+
+pulse_len= 50_000 # length of the demodulation 
+
+pulse_amp=0.125 # amplitude of the resonator pulse  
+
+offset_adc_1=0.0178279
+offset_adc_2=0.01554166
 
 
 
@@ -27,7 +29,7 @@ config = {
                 1: {"offset": 0.0},
                 2: {"offset": 0.0},
                 3: {"offset": 0.0},
-                4: {"offset": 0.0},
+                4: {"offset":  0.0},
                 5: {"offset": 0.0},
                 6: {"offset": 0.0},
                 7: {"offset": 0.0},
@@ -206,7 +208,7 @@ config = {
                 {
                     "intermediate_frequency": IF_fluxline,
                     "lo_frequency": LO_fluxline,
-                    "correction": (1, 0, 0, 1),
+                   "correction": (1, 0, 0, 1),
                 },
             ],       
         },

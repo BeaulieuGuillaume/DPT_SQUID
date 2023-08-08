@@ -10,8 +10,9 @@ twoPhoton_amp=0.185
 LO_readout = 4.2e9
 IF_readout = 100e6
 
-pulse_len= 10_000 # length of the demodulation and of the cw resonator pulse 
-pulse_amp=0.125
+pulse_len= 50_000 # length of the demodulation 
+
+pulse_amp=0.125 # amplitude of the resonator pulse  
 
 offset_adc_1=0.0178279
 offset_adc_2=0.01554166
@@ -40,8 +41,8 @@ config = {
                 5: {},
             },
             "analog_inputs": {
-                1: {"offset": +0.0178279, 'gain_db':0},
-                2: {"offset": +0.01554166, 'gain_db':0},
+                1: {"offset": offset_adc_1, 'gain_db':0},
+                2: {"offset": offset_adc_2, 'gain_db':0},
             },
         }
     },
@@ -166,10 +167,6 @@ config = {
          "twoPhoton_wf": {
             "type": "constant",
             "sample": twoPhoton_amp,
-        },
-        "readout_wf": {
-            "type": "constant",
-            "sample": pulse_amp,
         },
     },
     "digital_waveforms": {
