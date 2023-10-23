@@ -1,10 +1,11 @@
 
+
 #Flux line 
 LO_fluxline=8.6e9    
 IF_fluxline=99.5e6     
 
 twoPhoton_len= 10_000 # Length of the two photon pump
-twoPhoton_amp=0.185  #185
+twoPhoton_amp=0.185
 
 #Readout & resonator
 LO_readout = 4.2e9
@@ -16,6 +17,7 @@ pulse_amp=0.125 # amplitude of the resonator pulse
 
 offset_adc_1=0.0178279
 offset_adc_2=0.01554166
+
 
 config = {
     "version": 1,
@@ -41,8 +43,8 @@ config = {
                 5: {},
             },
             "analog_inputs": {
-                1: {"offset": offset_adc_1, 'gain_db':0},
-                2: {"offset": offset_adc_2, 'gain_db':0},
+                1: {"offset": +0.0},
+                2: {"offset": +0.0},
             },
         }
     },
@@ -61,13 +63,13 @@ config = {
                 },
             "intermediate_frequency": IF_readout,
             "operations": {
-                "cw": "const", #constant pulse for the resoantor demodulaiton 
+                "cw": "const",
                 "fake_readout": "zero_pulse" #"zero_pulse"
             },
             "digitalInputs": {
                 "switch": {
-                    "port": ("con1", 1), #digital of port 1 should go on the trigger of the octave
-                    "delay": 126,
+                    "port": ("con1", 1),
+                    "delay": 0,
                     "buffer": 0,
                 },
             },
@@ -87,6 +89,7 @@ config = {
                     "mixer": "octave_octave1_2", # Mixer connected to the fluxline (second mixer of the octave) 
                 },
             "intermediate_frequency": IF_fluxline,
+            "hold_offset":{"duration":5_000},
             "operations": {
                 "pumping":"twoPhoton", #Only operation is twoPhoton (a pump on the fluxline)
             },
@@ -98,7 +101,7 @@ config = {
                 },
             },
         },
-        
+         
         
         
     },
@@ -167,6 +170,10 @@ config = {
          "twoPhoton_wf": {
             "type": "constant",
             "sample": twoPhoton_amp,
+        },
+        "readout_wf": {
+            "type": "constant",
+            "sample": pulse_amp,
         },
     },
     "digital_waveforms": {

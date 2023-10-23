@@ -63,3 +63,14 @@ def update_offset(offset_1, offset_2,config,qmm):
     qm=qmm.open_qm(config)
     
     return config,qm 
+
+def update_gain(gain,config,qmm):
+    """ Update the input offsets of the qm in the configuration file """
+    
+    config['controllers']["con1"]["analog_inputs"][1]['gain_db']=gain
+    config['controllers']["con1"]["analog_inputs"][2]['gain_db']=gain
+    
+    
+    qm=qmm.open_qm(config)
+    
+    return config,qm 

@@ -4,7 +4,7 @@ LO_fluxline=8.6e9
 IF_fluxline=99.5e6     
 
 twoPhoton_len= 10_000 # Length of the two photon pump
-twoPhoton_amp=0.185
+twoPhoton_amp=0.185  #185
 
 #Readout & resonator
 LO_readout = 4.2e9
